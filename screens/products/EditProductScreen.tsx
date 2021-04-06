@@ -9,6 +9,7 @@ import { AdminRoutes } from "../../navigation/Routes";
 import { productSelectors, useProductStore, useProductStoreOf } from "../../state/ProductStore";
 import NotFound from "../../components/NotFound";
 import AppHeaderButtons from "../../components/AppHeaderButtons";
+import { Fonts } from "../../constants/fonts";
 
 type EditProductScreenProps = StackScreenProps<AdminStackParamList, AdminRoutes.EditProduct>;
 
@@ -28,7 +29,9 @@ type FormInputProps<T extends string> = Omit<TextInputProps, "onChangeText" | "s
 };
 const FormInput = <T extends string>({ label, name, value, onTextChange, ...textInputProps }: FormInputProps<T>) => (
   <View style={styles.formControl}>
-    <AppText style={styles.label}>{label}</AppText>
+    <AppText style={styles.label} type={Fonts.Bold}>
+      {label}
+    </AppText>
     <TextInput style={styles.input} value={value} onChangeText={(val) => onTextChange(name, val)} {...textInputProps} />
   </View>
 );
